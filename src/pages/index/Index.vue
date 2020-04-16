@@ -1,7 +1,7 @@
 <template>
   <div id="main">
-    <!-- <img alt="Vue logo" src="../../assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <img src="../../assets/images/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
@@ -14,52 +14,53 @@ export default {
     HelloWorld,
   },
   data() {
-    return {}
+    return {};
   },
   created() {
     this.getData();
-    this.postData();
+    // this.postData();
   },
   methods: {
     getData() {
-      this.$axios.get('/word/clock/getChannelInfo?channel=111')
-        .then(function (response) {
+      const url = '/word/clock/getChannelInfo';
+      const params = {
+        channel: 111,
+      };
+      this.AxiosRequest.get(url, { params })
+        .then((response) => {
           // handle success
           console.log(response);
         })
-        .catch(function (error) {
+        .catch((error) => {
           // handle error
           console.log(error);
-        })
-        .then(function () {
-          // always executed
         });
     },
     postData() {
-      const url = '/trainingCamp/union/productInfo';
+      const url = '/activityCourse/getActivityCourseList';
       const params = {
         uid: 1,
-        id: 118,
-        type: 13,
-        channel: 'h5'
+        activityId: 146,
+        courseId: 116,
+        start: 1,
+        size: 20,
       };
-      this.$axios.get(url, {params: params})
-        .then(function (response) {
+      this.AxiosRequest.post(url, { params })
+        .then((response) => {
           // handle success
           console.log(response);
         })
-        .catch(function (error) {
+        .catch((error) => {
           // handle error
           console.log(error);
         })
-        .then(function () {
+        .then(() => {
           // always executed
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="less">
-
 </style>

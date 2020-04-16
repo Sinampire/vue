@@ -6,7 +6,7 @@ module.exports = {
     assetsDir: 'static',
     indexPath: 'index.html',
     // eslint-loader 是否在保存的时候检查
-    lintOnSave: false,
+    lintOnSave: true,
     // 生产环境是否生成 sourceMap 文件
     productionSourceMap: true,
     // css相关配置
@@ -34,7 +34,11 @@ module.exports = {
                 }
             }
         }, // 设置代理
-        before: app => {}
+        before: app => {},
+        overlay: {
+            warnings: true,
+            errors: true,
+        },
     },
     // 第三方插件配置
     pluginOptions: {},

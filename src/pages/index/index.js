@@ -1,11 +1,9 @@
 import Vue from 'vue';
 import Index from './Index.vue';
-import axios from 'axios';
-
-Vue.prototype.$axios = axios;
+import '../../assets/js/common';
 
 Vue.config.productionTip = false;
 
 new Vue({
-    render: (h) => h(Index),
+  render: (h) => h(Index),
 }).$mount('#root');
